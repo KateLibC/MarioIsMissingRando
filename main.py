@@ -35,8 +35,8 @@ def createArguments():
         help='Enables a mode that flashes Koopas on an interval when they have items.', required=False,
         action='store_true', default=False)
     margs.add_argument('--seed', dest='seed', help='Use a custom seed value (format must be "00AF,AF00")', required=False)
-    margs.add_argument('--undefund', dest='undefund', help='Re-enables a sprite that is removed by default. It is requested you do not use this.', 
-        required=False, action='store_true', default=False)
+    #margs.add_argument('--undefund', dest='undefund', help='Re-enables a sprite that is removed by default. It is requested you do not use this.', 
+    #    required=False, action='store_true', default=False)
     return margs
 
 if __name__ == '__main__':
@@ -65,10 +65,10 @@ if __name__ == '__main__':
         print('Enabling "easy mode". Koopas will flash as you view them on the map or GPS.')
         kv = m.koopaROM()
         p.romBytes = showKoopas(romBytes=p.romBytes, startAddr=kv[0], lastAddr=kv[1])
-    if args['undefund']:
-        displayMessage()
-    else:
-        p.romBytes = defundSprites(romBytes=p.romBytes, addresses=m.defundROM())
+    #if args['undefund']:
+    #    displayMessage()
+    #else:
+    #    p.romBytes = defundSprites(romBytes=p.romBytes, addresses=m.defundROM())
     print('\nFinalizing everything...')
     cv = m.creditsROM()
     p.romBytes = appendCredits(romBytes=p.romBytes, startAddr=cv[0], lastAddr=cv[1])
